@@ -52,8 +52,9 @@ function spinWheel() {
 
     isSpinning = true;
     const spinTime = 8000; // Spin duration (8 seconds)
-    const totalSpins = 5; // Number of full rotations
-    const spinAngle = Math.PI * 2 * totalSpins; // Total spin angle
+    const totalSpins = 5; // Minimum number of full rotations
+    const randomOffset = Math.random() * Math.PI * 2; // Random offset angle
+    const spinAngle = Math.PI * 2 * totalSpins + randomOffset; // Total spin angle
     let startTime = null;
 
     function animate(timestamp) {
