@@ -96,7 +96,7 @@ function showCelebration(selected) {
 
     setTimeout(() => {
         celebrationDiv.classList.remove("show");
-    }, 3000);
+    }, 3500);
 }
 
 async function fetchRestaurants(type = '', optionCount = 30) {
