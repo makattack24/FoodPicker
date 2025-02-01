@@ -11,17 +11,23 @@
 <body>
     <div class="container">
         <h1>Find Nearby Restaurants</h1>
+        <div class="numOfOptions">
+            <label for="optionCount">Number of Options:</label>
+            <input type="number" id="optionCount" min="1" value="30">
+        </div>
         <div class="wheel-container">
             <canvas id="wheel" width="500" height="500"></canvas>
         </div>
-        <button id="spinButton">Spin the Wheel</button>
         
-        <button onclick="fetchRestaurants()">All Restaurants</button>
-        <button onclick="fetchRestaurants('fast_food')">Fast Food</button>
-        <button onclick="fetchRestaurants('restaurant')">Sit-Down Restaurants</button>
+        <button id="allRestaurantsButton">All Restaurants</button>
+        <button id="fastFoodButton">Fast Food</button>
+        <button id="sitDownButton">Sit-Down Restaurants</button>
+        <br>
+        <button id="spinButton">Spin the Wheel</button>
 
         <div id="result"></div>
         <div id="celebration" class="celebration"></div>
+
     </div>
 </body>
 </html>

@@ -1,14 +1,20 @@
+
+
 var restaurants = [];
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 const spinButton = document.getElementById("spinButton");
 const resultDiv = document.getElementById("result");
 const celebrationDiv = document.getElementById("celebration");
-
+const optionCountInput = document.getElementById("optionCount");
+const allRestaurantsButton = document.getElementById("allRestaurantsButton");
+const fastFoodButton = document.getElementById("fastFoodButton");
+const sitDownButton = document.getElementById("sitDownButton")
 var arc;
 let startAngle = 0; 
 let isSpinning = false; 
 let selectedIndex = null; 
+let currentFilter = '';
 
 function drawWheel(highlightIndex = null) {
     ctx.clearRect(0, 0, canvas.width, canvas.height); 
@@ -74,7 +80,7 @@ function spinWheel() {
                 const selected = restaurants[selectedIndex];
                 drawWheel(selectedIndex);
                 setTimeout(() => {
-                    resultDiv.textContent = `You got: ${selected}!`;
+                    resultDiv.innerHTML = `You got:<br>${selected}`;
                     showCelebration(selected);
                 }, 500);
             }
@@ -85,7 +91,7 @@ function spinWheel() {
 }
 
 function showCelebration(selected) {
-    celebrationDiv.textContent = `Congratulations! You got: ${selected}!`;
+    celebrationDiv.innerHTML = `Congrats Fat Ass!<br><br>You got:<br><br>${selected}`;
     celebrationDiv.classList.add("show");
 
     setTimeout(() => {
@@ -93,7 +99,7 @@ function showCelebration(selected) {
     }, 3000);
 }
 
-async function fetchRestaurants(type = '') {
+async function fetchRestaurants(type = '', optionCount = 30) {
     console.log("called");
     console.log("type:", type);
 
@@ -109,7 +115,7 @@ async function fetchRestaurants(type = '') {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
         const data = await response.json();
-        restaurants = data.map(r => r.name).slice(0, 20);
+        restaurants = data.map(r => r.name).slice(0, optionCount);
         console.log(restaurants);
 
         if (restaurants.length > 0) {
@@ -120,6 +126,22 @@ async function fetchRestaurants(type = '') {
         console.error("Error fetching restaurants:", error);
     }
 }
+
+// Function to update options based on user input
+function updateOptions() {
+    const optionCount = parseInt(optionCountInput.value, 10);
+    if (!isNaN(optionCount) && optionCount > 0) {
+        fetchRestaurants('', optionCount);
+    }
+}
+
+// Add event listener to the input field
+optionCountInput.addEventListener('input', updateOptions);
+
+allRestaurantsButton.addEventListener('click', () => fetchRestaurants('', parseInt(optionCountInput.value, 10)));
+fastFoodButton.addEventListener('click', () => fetchRestaurants('fast_food', parseInt(optionCountInput.value, 10)));
+sitDownButton.addEventListener('click', () => fetchRestaurants('restaurant', parseInt(optionCountInput.value, 10)))
+
 
 spinButton.addEventListener("click", spinWheel);
 document.addEventListener("DOMContentLoaded", () => fetchRestaurants());

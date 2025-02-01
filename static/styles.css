@@ -75,3 +75,11 @@ button:hover {
 .celebration.show {
     display: flex;
 }
+
+button:active, :focus {
+    background-color: #9c6bff;
+}
+
+.numOfOptions {
+    padding-top: .85em;
+}
