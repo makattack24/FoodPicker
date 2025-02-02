@@ -121,6 +121,7 @@ canvas {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 1; /* Content stays above the canvas */
     position: relative;
+    opacity: .75;
 }
 
 h1 {
