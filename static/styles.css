@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
@@ -7,6 +7,8 @@ body {
     margin: 0;
     background-color: #121212;
     color: #ffffff;
+    padding: 0;
+    overflow: hidden;
 }
 
 .container {
@@ -15,6 +17,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    position: absolute;
 }
 
 h1 {
@@ -32,6 +36,103 @@ h1 {
 canvas {
     border-radius: 50%;
     border: 5px solid #ffffff;
+}
+
+button {
+    background-color: #6200ea;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3700b3;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.celebration {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.celebration.show {
+    display: flex;
+}
+
+button:active, :focus {
+    background-color: #9c6bff;
+}
+
+.numOfOptions {
+    padding-top: .85em;
+}
+*/
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #121212;
+    color: #ffffff;
+    padding: 0;
+    overflow: hidden;
+    position: relative; /* Make sure the canvas stays behind the content */
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the canvas stays in the background */
+}
+
+.container {
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1; /* Content stays above the canvas */
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.wheel-container {
+    margin: 20px auto;
+    position: relative;
+    width: 500px;
+    height: 500px;
 }
 
 button {
