@@ -1,7 +1,12 @@
 import overpy
 from flask import Flask, render_template, jsonify, request
+import threading
+import time
+import webbrowser
+import requests
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # Function to fetch nearby restaurants
 def get_restaurants(lat, lon, type_filter=None):
@@ -38,10 +43,11 @@ def fetch_restaurants():
     restaurants = get_restaurants(lat, lon, type_filter)
     return jsonify(restaurants)
 
+
 @app.route('/')
 def home():
     return render_template("index.html")
 
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
-    app.run(host='0.0.0.0', port=5000)

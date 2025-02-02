@@ -1,6 +1,6 @@
 
 
-var restaurants = [];
+let restaurants = [];
 const canvas = document.getElementById("wheel");
 const ctx = canvas.getContext("2d");
 const spinButton = document.getElementById("spinButton");
@@ -10,7 +10,7 @@ const optionCountInput = document.getElementById("optionCount");
 const allRestaurantsButton = document.getElementById("allRestaurantsButton");
 const fastFoodButton = document.getElementById("fastFoodButton");
 const sitDownButton = document.getElementById("sitDownButton")
-var arc;
+let arc;
 let startAngle = 0; 
 let isSpinning = false; 
 let selectedIndex = null; 
@@ -99,7 +99,7 @@ function showCelebration(selected) {
     }, 3500);
 }
 
-async function fetchRestaurants(type = '', optionCount = 30) {
+async function fetchRestaurants(type = '', optionCount = 20) {
     console.log("called");
     console.log("type:", type);
 
