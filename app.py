@@ -1,5 +1,4 @@
 import overpy
-import webbrowser
 from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
@@ -45,4 +44,4 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)
-    webbrowser.get('brave').open_new("http://127.0.0.1:5000/")
+    app.run(host='0.0.0.0', port=5000)
