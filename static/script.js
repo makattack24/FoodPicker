@@ -9,7 +9,7 @@ const celebrationDiv = document.getElementById("celebration");
 const optionCountInput = document.getElementById("optionCount");
 const allRestaurantsButton = document.getElementById("allRestaurantsButton");
 const fastFoodButton = document.getElementById("fastFoodButton");
-const sitDownButton = document.getElementById("sitDownButton")
+const sitDownButton = document.getElementById("sitDownButton");
 let arc;
 let startAngle = 0; 
 let isSpinning = false; 
